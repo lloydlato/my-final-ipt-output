@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Weather Update - Iligan City</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(loyd.jpg);
+            background-size: cover;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: rgba(64, 68, 85, 0.8);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 20px;
+            background: rgba(243, 241, 241, 0.9);
+            border-radius: 10px;
+            text-align: left;
+        }
+        #search-section {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        #city-input {
+            width: 300px;
+            padding: 10px;
+            border: 2px solid #5cc71e;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        #search-button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #86a277;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #search-button:hover {
+            background-color: #2e7c32;
+        }
+        #weather {
+            text-align: center;
+            margin: 20px 0;
+        }
+        footer {
+            background-color: #9c94a1;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            margin-top: 50px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Project.html">Project</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="text-center">Weather Update - Enter Your City</h1>
+        <div id="search-section" class="text-center">
+            <input type="text" id="city-input" placeholder="Enter city name..." aria-label="Enter city name" />
+            <button id="search-button">Get Weather</button>
+        </div>
+        <div id="weather"></div>
+    </div>
+
+    <footer>
+        <p>(Lato, Lloyd A.) - date: <span id="current-date"></span></p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const footerDate = document.getElementById("current-date");
+            const now = new Date();
+            const options = { year: "numeric", month: "short", day: "numeric" };
+            footerDate.textContent = now.toLocaleDateString("en-US", options);
+        });
+
+        document.getElementById("search-button").addEventListener("click", function () {
+            const cityName = document.getElementById("city-input").value.trim();
+            if (cityName) {
+                getWeather(cityName);
+            } else {
+                alert("Please enter a city name.");
+            }
+        });
+
+        async function getWeather(cityName) {
+            const apiKey = "cc68bd4d6b26495ba2d60337241208";
+            const apiEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&days=7`;
+
+            try {
+                const response = await fetch(apiEndpoint);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const weatherData = await response.json();
+
+                const now = new Date();
+                const options = {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                };
+                const formattedDateTime = now.toLocaleDateString("en-US", options);
+
+                const weatherContainer = document.getElementById("weather");
+                const currentWeather = weatherData.current;
+                const forecast = weatherData.forecast.forecastday;
+
+                weatherContainer.innerHTML = `
+                    <h2>${cityName}</h2>
+                    <p><strong>Date and Time:</strong> ${formattedDateTime}</p>
+                    <p><strong>Temperature:</strong> ${currentWeather.temp_c}°C</p>
+                    <p><strong>Weather:</strong> ${currentWeather.condition.text}</p>
+                    <p><strong>Humidity:</strong> ${currentWeather.humidity}%</p>
+                `;
+
+                forecast.forEach((day) => {
+                    const dayDate = new Date(day.date);
+                    const dayName = dayDate.toLocaleDateString("en-US", { weekday: "long" });
+                    const dayDiv = document.createElement("div");
+                    dayDiv.classList.add("day");
+                    dayDiv.innerHTML = `
+                        <p>${dayName}</p>
+                        <p><time datetime="${day.date}">${day.date}</time></p>
+                        <p><strong>Max Temp:</strong> ${day.day.maxtemp_c}°C</p>
+                        <p><strong>Min Temp:</strong> ${day.day.mintemp_c}°C</p>
+                        <p><strong>Weather:</strong> ${day.day.condition.text}</p>
+                    `;
+                    weatherContainer.appendChild(dayDiv);
+                });
+            } catch (error) {
+                const weatherContainer = document.getElementById("weather");
+                weatherContainer.innerHTML = `<p>Unable to retrieve weather data: ${error.message}</p>`;
+                console.error("Error fetching weather data:", error);
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

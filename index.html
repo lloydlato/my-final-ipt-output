@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <title>My Portfolio</title>
+    <style>
+        body {
+            background-image: url('loyd.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            color: #f8f9fa;
+            font-family: 'Arial', sans-serif; 
+        }
+
+        header {
+            background: rgba(29, 36, 76, 0.137); 
+            color: #0fc3f0;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+        }
+
+        h1, h2 {
+            color: #11ec3d;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+        }
+
+        footer {
+            background: rgba(63, 81, 181, 0.8); 
+            color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); 
+        }
+
+        .container {
+            background: rgba(24, 7, 7, 0); 
+            border-radius: 8px; 
+            padding: 20px;
+            margin-top: 30px; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+        }
+
+        .nav-link {
+            transition: color 0.3s ease; 
+        }
+
+        .nav-link:hover {
+            color: #f0a500; 
+        }
+
+        .card {
+            border: none; 
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
+        }
+
+        .card-title {
+            color: #007BFF; 
+        }
+
+      
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2em; 
+            }
+
+            h2 {
+                font-size: 1.5em; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="text-center">
+        <h1>Welcome to My Portfolio</h1>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="contact.html">Contact</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link text-white" href="project.html">Project</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container my-5">
+        <section id="projects" class="mb-5">
+            
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h3 class="card-title">My Projects</h3>
+                    <p>
+                LinkedIn:
+                <a href="http://127.0.0.1:3000/Project.html">Project1 (Product)</a>
+            </p>
+                <p>
+                LinkedIn:
+                <a href="http://127.0.0.1:3000/weather.html">Project2 (Weather)</a>
+
+            </p>
+               <p>
+                LinkedIn:
+                <a href="http://127.0.0.1:3000/contact.html">Project3 (Contact form)</a>
+            </p>
+            <p>
+                LinkedIn:
+                <a href="http://127.0.0.1:3000/myportfolio.html">Project4</a>
+            </p>
+                </div>
+            </div>
+          
+        </section>
+
+        <section id="contact" class="mb-5">
+            <h2>Contact Me</h2>
+            <p>
+                Email:
+                <a href="https://myaccount.google.com/?hl=en&utm_source=OGB&utm_medium=act&gar=WzEyMF0&pli=1">lloydlato19@gmail.com</a>
+            </p>
+            <p>
+                LinkedIn:
+                <a href="https://www.facebook.com/profile.php?id=100086653112717">dirk brody</a>
+            </p>
+            <p>
+                GitHub: <a href="https://github.com/lloydlato">lloydlato</a>
+            </p>
+        </section>
+    </div>
+
+    <footer class="text-center p-3">
+        <p>
+            &copy; 2024
+            <a class="text-white" href="mailto:lloydlato19@gmail.com">lloydlato19@gmail.com</a>. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            background-color: #307bc7;
+            color: #3f2b2b;
+        }
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: rgba(47, 49, 56, 0.8);
+            color: #fff;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .portfolio-item {
+            margin-bottom: 30px;
+            position: relative; /* Position for overlay */
+            overflow: hidden; /* Hide overflow for scaling effect */
+            transition: transform 0.3s; /* Add smooth transition */
+        }
+        .portfolio-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s, opacity 0.3s; /* Add smooth transition for images */
+        }
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.05); /* Scale up image on hover */
+            opacity: 0.7; /* Make image semi-transparent on hover */
+        }
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Portfolio</h1>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container my-5">
+        <h2 class="text-center">MEMORIES</h2>
+        <div class="row" id="portfolio">
+            <div class="col-md-4 portfolio-item">
+                <img src="lol1.jpg" alt="Description of image 1" class="portfolio-img">
+                <h5>Project Title 1</h5>
+                <p>ARTS MONTH- Champion 2019</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <img src="lol2.jpg" alt="Description of image 2" class="portfolio-img">
+                <h5>Project Title 2</h5>
+                <p>NMRAA 2019 FOLK DANCE Champion</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <img src="lol3.jpg" alt="Description of image 3" class="portfolio-img">
+                <h5>Project Title 3</h5>
+                <p>Uncle Brew Staff</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <img src="lol4.jpg" alt="Description of image 4" class="portfolio-img">
+                <h5>Project Title 4</h5>
+                <p>NSTP WATER SURVIVAL</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <img src="lol5.jpg" alt="Description of image 5" class="portfolio-img">
+                <h5>Project Title 5</h5>
+                <p>CCS GALA 2023</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <img src="LOL6.jpg" alt="Description of image 6" class="portfolio-img">
+                <h5>Project Title 6</h5>
+                <p>CCS PALARO 2023</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Lloyd Lato. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
